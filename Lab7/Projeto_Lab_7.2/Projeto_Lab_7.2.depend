@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1447366482 source:c:\users\rodrigo\documents\unb\apc\praticas_laboratorio\funcoes.c
+
+1447368276 source:c:\users\rodrigo\documents\unb\apc\praticas_laboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+
+1447366482 c:\users\rodrigo\documents\unb\apc\praticas_laboratorio\funcoes.c
+
+1447357581 c:\users\rodrigo\documents\unb\apc\praticas_laboratorio\funcoes.h
+
