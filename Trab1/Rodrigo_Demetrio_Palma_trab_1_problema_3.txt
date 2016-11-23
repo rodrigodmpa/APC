@@ -1,0 +1,72 @@
+algoritmo "comprimento"
+
+
+var
+    real: a0,a1,a2,a3,a4,a5
+    real: x0,x1,x1o,xe,e,comp = 0,fx0,fxe,cat1,cat2
+
+
+inicio
+
+
+    escreva("Insira o valor do coeficiente de grau 5:")
+    leia("a5")
+
+    escreva("Insira o valor do coeficiente de grau 4:")
+    leia("a4")
+
+    escreva("Insira o valor do coeficiente de grau 3:")
+    leia("a3")
+
+    escreva("Insira o valor do coeficiente de grau 2:")
+    leia("a2")
+
+    escreva("Insira o valor do coeficiente de grau 1:")
+    leia("a1")
+
+    escreva("Insira o valor do coeficiente de grau 0:")
+    leia("a0")
+
+    escreva("Insira o primeiro numero do intervalo (x0):")
+    leia("x0")
+
+    escreva("Insira o segundo numero do intervalo (x1):")
+    leia("x1")
+
+    escreva("Insira a precisao necessaria:")
+    leia("e")
+
+    escreva("O intervalo eh",x0,x1)
+
+
+
+    se (x0>x1) entao
+    
+        x1o = x1
+        x1 = x0
+        x0 = x1o
+    fimse
+
+	enquanto (fabs(L1-L0)>e) faca
+    
+
+    L0 = L1 
+    L1 = 0  
+    divide_intervalo = (x1-x0)/n 
+    n++ 
+    fx0 = a5*pow(x0,5) + a4*pow(x0,4) + a3*pow(x0,3) + a2*pow(x0,2) + a1*pow(x0,1) + a0
+
+    para A = x0 + divide_intervalo de A <= x1 ate A = A + divide_intervalo faca 
+    
+    fA = a5*pow(A,5) + a4*pow(A,4) + a3*pow(A,3) + a2*pow(A,2) + a1*pow(A,1) + a0
+    comp = sqrt(pow(divide_intervalo,2) + pow(fA-fx0,2))
+    L1 = L1 + comp
+    fx0 = fA
+
+    fimenquanto
+    fimpara
+
+    printf("F(x) =  x^5 +  x^4 +  x^3 +  x^2 +  x +   ",a5,a4,a3,a2,a1,a0)
+    printf("O comprimento de F(x) no intervalo acima eh:",L1)
+
+fimalgoritmo

@@ -1,0 +1,293 @@
+algoritmo "Banco"
+
+    real: conta1=0,conta2=0,conta3=0,conta_banco=0
+    inteiro: conta, operacao, conta_destino
+    real: deposito,saque,transferencia
+
+inicio
+
+    faca
+    
+        escreva("******************************************************************************")
+        escreva("                                  PORTAL DO SISBANCO")
+        escreva("******************************************************************************")
+        escreva("Digite sua conta ou 0 para sair.")
+        leia("conta")
+        sistema("limpartela")
+
+        enquanto conta!=1 && conta!=2 && conta!=3 && conta != 0 faca
+        
+            escreva("Conta invalida! Tente Novamente!")
+            escreva("Digite sua Conta:")
+            leia("conta")
+            sistema("limpartela")
+        
+	fimenquanto
+
+        se conta==0 entao
+        
+            fimalgoritmo
+
+        fimse
+
+
+       faca
+        
+            se conta==1 entao
+            
+                escreva("***************************************************************************")
+                escreva("                                  OPERACOES")
+                escreva("***************************************************************************")
+                escreva("(1) DEPOSITO")
+                escreva("(2) SAQUE")
+                escreva("(3) TRANSFERENCIA")
+                escreva("(4) SALDO")
+                escreva("(0) PARA SAIR")
+                escreva("**************************************************************************")
+                escreva("Escolha uma opcao:")
+                leia("operacao")
+                sistema("limpartela")
+                enquanto operacao != 1 && operacao != 2 && operacao != 3 && operacao != 4 && operacao != 0 faca
+                
+                    escreva("Operacao invalida! Tente novamente!")
+                    escreva("Escolha uma opcao:")
+                    leia("operacao")
+                fimenquanto
+
+                se operacao ==1 entao //DEPOSITO 1
+                
+                    escreva("Valor depositado:")
+                    leia("deposito")
+                    conta1 = conta1 + deposito
+                    escreva("Deposito efetuado com sucesso!")
+                fimse
+                se operacao == 2 entao //SAQUE 1
+                
+
+                    escreva("Valor (R$):")
+                    leia("saque")
+                    se 1.0038*saque>conta1 entao
+                        escreva("Saldo insuficiente!")
+                    senao
+                    
+                        conta1 = conta1 - 1.0038*saque
+                        conta_banco =conta_banco + 0.0038*saque
+                        escreva("Saque efetuado com sucesso!")
+                    fimse
+                fimse
+
+                se operacao ==3 entao // TRANSFERENCIA 1
+                
+                    escreva("Digite o numero da conta de destino:")
+                    leia("conta_destino")
+
+                    escreva("Valor (R$):")
+                    leia("transferencia")
+
+                    se transferencia*1.0038>conta1 entao
+                        escreva("Saldo insuficiente.")
+
+                    senao
+                    
+                        se conta_destino == 2 entao
+                        
+                            conta1 =conta1 - 1.0038*transferencia
+                            conta2 =conta2 + transferencia
+                            conta_banco =conta_banco + 0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        
+                        senao se (conta_destino == 3) entao
+                        
+                            conta1 =conta1 - 1.0038*transferencia
+                            conta3 =conta3 + transferencia
+                            conta_banco = conta_banco + 0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        
+                        senao
+                            escreva("Conta destino invalida!")
+                    fimse
+
+                fimse
+
+                 se operacao == 4 entao // SALDO 1 
+                
+                    escreva("Saldo (R$):",conta1)
+
+
+                
+            fimse
+            senao se (conta==2) entao
+            
+
+                escreva("***************************************************************************")
+                escreva("                                OPERACOES")
+                escreva("***************************************************************************")
+                escreva("(1) DEPOSITO")
+                escreva("(2) SAQUE")
+                escreva("(3) TRANSFERENCIA")
+                escreva("(4) SALDO")
+                escreva("(0) PARA SAIR")
+                escreva("***************************************************************************")
+                escreva("Escolha uma opcao:")
+                leia("operacao")
+                sistema("limpartela")
+                enquanto operacao != 1 && operacao != 2 && operacao != 3 && operacao != 4 && operacao != 0 faca
+                
+                    escreva("Operacao invalida! Tente novamente!")
+                    escreva("Escolha uma opcao:")
+                    leia("operacao")
+                fimenquanto
+
+                se operacao ==1 entao //DEPOSITO 2
+                
+                    escreva("Valor depositado:")
+                    leia("deposito")
+                    conta2 =conta 2 + deposito
+                    escreva("Deposito efetuado com sucesso!")
+                fimse
+
+                se operacao ==2 entao //SAQUE 2
+                
+
+                    escreva("Valor (R$):")
+                    leia("saque")
+                    se 1.0038*saque>conta2 entao
+                        escreva("Saldo insuficiente!")
+                    senao
+                    
+
+                        conta2 -=1.0038*saque
+                        conta_banco += 0.0038*saque
+                        escreva("Saque efetuado com sucesso!")
+                    
+                    fimse
+		fimse
+                se operacao ==3 entao //TRANSFERENCIA 2
+                
+                    escreva("Digite o numero da conta de destino:")
+                    leia("conta_destino")
+
+                    escreva("Valor (R$):")
+                    leia("transferencia")
+                    se transferencia*1.0038>conta2 entao
+                        escreva("Saldo insuficiente.")
+                    senao
+                    
+                        se conta_destino == 1 entao
+                        
+                            conta2 -=1.0038*transferencia
+                            conta1 +=transferencia
+                            conta_banco +=0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        fimse
+                        senao se conta_destino == 3 entao
+                        
+                            conta2 -= 1.0038*transferencia
+                            conta3 += transferencia
+                            conta_banco +=0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        fimse
+                        senao
+                            escreva("Conta destino invalida!")
+                    fimse
+
+                fimse
+                se operacao == 4 entao // SALDO 2
+                
+                    escreva("Saldo (R$):",conta2)
+
+
+                fimse
+
+            fimse
+            senao se conta==3 entao
+            
+                escreva("***************************************************************************")
+                escreva("                                  OPERACOES")
+                escreva("***************************************************************************")
+                escreva("(1) DEPOSITO")
+                escreva("(2) SAQUE")
+                escreva("(3) TRANSFERENCIA")
+                escreva("(4) SALDO")
+                escreva("(0) PARA SAIR")
+                escreva("***************************************************************************")
+                escreva("Escolha uma opcao:")
+                leia("operacao")
+                sistema("limpartela")
+                enquanto operacao != 1 && operacao != 2 && operacao != 3 && operacao != 4 && operacao != 0 faca
+                
+                    escreva("Operacao invalida! Tente novamente!")
+                    escreva("Escolha uma opcao:")
+                    leia("operacao")
+                fimenquanto
+                se operacao ==1 entao //DEPOSITO 3
+                
+                    escreva("Valor depositado:")
+                    leia("deposito")
+                    conta3 +=deposito
+                    escreva("Deposito efetuado com sucesso!")
+
+                fimse
+                se operacao ==2 entao //SAQUE 3
+                
+
+                    escreva("Valor (R$):")
+                    leia("saque")
+                    se 1.0038*saque>conta3 entao
+                        escreva("Saldo insuficiente!")
+                    senao
+                    
+
+                        conta3 -=1.0038*saque
+                        conta_banco += 0.0038*saque
+                        escreva("Saque efetuado com sucesso!")
+
+                    fimse
+                fimse
+
+                se operacao ==3 entao // TRANSFERENCIA 3
+                
+                    escreva("Digite o numero da conta de destino:")
+                    leia("conta_destino")
+
+                    escreva("Valor (R$):")
+                    leia("transferencia")
+                    se transferencia*1.0038>conta3 entao
+                        escreva("Saldo insuficiente.")
+                    senao
+                    
+                        se conta_destino == 1 entao
+                        
+                            conta3 -=1.0038*transferencia
+                            conta1 +=transferencia
+                            conta_banco +=0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        fimse
+                        senao se conta_destino == 2
+                        
+                            conta3 -= 1.0038*transferencia
+                            conta2 += transferencia
+                            conta_banco +=0.0038*transferencia
+                            escreva("Transferencia efetuada com sucesso!")
+                        fimse
+                        senao
+                            escreva("Conta destino invalida!")
+                    fimse
+
+                fimse
+                se operacao == 4 entao // SALDO 3
+                
+                    escreva("Saldo (R$):",conta3)
+
+
+                fimse
+            fimse
+
+
+        fimse
+        enquanto operacao == 1 || operacao == 2 || operacao == 3 || operacao == 4 
+
+    
+    enquanto operacao==0
+
+fimalgoritmo

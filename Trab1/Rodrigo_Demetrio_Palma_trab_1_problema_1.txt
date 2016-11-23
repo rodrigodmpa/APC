@@ -1,0 +1,254 @@
+algoritmo "Complexos"
+
+	
+
+
+    real Z_1_1,Z_1_2,Z_2_1,Z_2_2
+    real Z1mod,Z2mod,Z1arg,Z2arg,resultado_modulo,resultado_arg,resultado_cartesianoX,resultado_cartesianoY,cart1x,cart1y,cart2x,cart2y
+    caractere FE,FS,codigo
+
+    escreva("Entre com o formato de entrada (C)artesiano ou (E)xponencial:")
+    leia("FE")
+    
+
+
+    se (FE == 'C') entao
+    
+        escreva("Digite a parte real de Z1:")
+        leia("Z_1_1")
+        escreva("Digite a parte imaginaria de Z1:")
+        leia("Z_1_2")
+        escreva("Digite a parte real de Z2:")
+        leia("Z_2_1")
+        escreva("Digite a imaginaria real de Z2:")
+        leia("Z_2_2")
+
+        sistema("limpartela")
+
+
+        escreva("Z1 =  +  i",Z_1_1,Z_1_2)
+        escreva("Z2 =  +  i",Z_2_1,Z_2_2)
+
+        Z1mod = sqrt(pow(Z_1_1,2) + pow(Z_1_2,2))
+        Z2mod = sqrt(pow(Z_2_1,2) + pow(Z_2_2,2))
+        Z1arg = arcotangente(Z_1_2/Z_1_1)*180/pi 
+        Z2arg = arcotangente(Z_2_2/Z_2_1)*180/pi 
+    fimse
+
+    senao se (FE == 'E') entao
+    
+        escreva("Digite o modulo de Z1:")
+        leia("Z_1_1")
+        escreva("Digite a fase em radianos de Z1:")
+        leia("Z_1_2")
+        escreva("Digite o modulo de Z2:")
+        leia("Z_2_1")
+        escreva("Digite a fase em radianos de Z2:")
+        leia("Z_2_2")
+
+        sistema("limpartela")
+
+        escreva("Z1 =   * e^  i",Z_1_1,Z_1_2)
+        escreva("Z2 =   * e^  i",Z_2_1,Z_2_2)
+
+        cart1x = Z_1_1*cos(Z_1_2)
+        cart1y = Z_1_1*sin(Z_1_2)
+        cart2x = Z_2_1*cos(Z_2_2)
+        cart2y = Z_2_1*sin(Z_2_2)
+
+        Z1mod  = Z_1_1
+        Z2mod  = Z_2_1
+        Z1arg  = Z_1_2*180/pi
+        Z2arg  = Z_2_2*180/pi
+    fimse
+    escolha (FE) 
+    
+    caso 'C' :
+        faca
+        
+            
+            escreva("**********MENU DE OPERACOES********")
+            escreva("(M) - Multiplicacao")
+            escreva("(D) - Divisao")
+            escreva("(E) - Converte Exponencial")
+            escreva("(C) - Converte Cartesiano")
+            escreva("(Z) - Para fechar o programa")
+            escreva("***********************************")
+            escreva("Escolha o codigo da operacao: ")
+            leia("codigo")
+            
+
+
+
+            escolha (codigo)
+            
+            caso 'M' :
+
+                resultado_modulo = (Z1mod * Z2mod)
+                resultado_arg = (Z1arg + Z2arg)
+
+                escreva("Insira o formato de saida (C)artesiano ou (E)xponencial:")
+                leia("FS")
+                
+
+                escolha (FS)
+                
+                caso 'C':
+                    resultado_cartesianoX = resultado_modulo*(cos(resultado_arg*pi/180))
+                    resultado_cartesianoY = resultado_modulo* (sin(resultado_arg*pi/180))
+                    escreva("Os valores iniciais foram Z1: +  i e Z2: +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o cartesiano.")
+                    escreva("O resultado da multiplicacao Z1 X Z2 foi  +  i ", resultado_cartesianoX,resultado_cartesianoY)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                 
+                caso 'E':
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2: +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o exponencial.")
+                    escreva("O resultado da multiplicacao Z1 X Z2 foi: modulo ( ) e fase (  graus). ", resultado_modulo,resultado_arg)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+
+                
+            caso 'D' :
+
+                resultado_modulo = (Z1mod / Z2mod)
+                resultado_arg = (Z1arg - Z2arg)
+
+                escreva("Insira o formato de saida (C)artesiano ou (E)xponencial:")
+                leia("FS")
+                
+
+                escolha (FS)
+                
+                caso 'C':
+                    resultado_cartesianoX = resultado_modulo*(cos(resultado_arg*pi/180))
+                    resultado_cartesianoY = resultado_modulo* (sin(resultado_arg*pi/180))
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o cartesiano.")
+                    escreva("O resultado da divisao Z1 / Z2 foi  +  i ", resultado_cartesianoX,resultado_cartesianoY)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                    
+                caso 'E':
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o exponencial.")
+                    escreva("O resultado da divisao Z1 / Z2 foi: modulo ( ) e fase (  graus). ", resultado_modulo,resultado_arg)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+                
+
+            caso 'E' :
+                escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                escreva("A operacao escohida foi converte exponencial.")
+                escreva("Z1:Modulo ( ) Fase (  graus).",Z1mod,Z1arg)
+                escreva("Z2:Modulo ( ) Fase ( graus).",Z2mod,Z2arg)
+                escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+            caso 'C':
+                escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                escreva("A operacao escohida foi converte cartesiano.")
+                escreva("Os valores ja estao no formato cartesiano.")
+                escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+            
+        
+        enquanto codigo != 'Z' 
+        
+
+    caso 'E':
+        faca
+        
+            
+            escreva("**********MENU DE OPERACOES********")
+            escreva("(M) - Multiplicacao")
+            escreva("(D) - Divisao")
+            escreva("(E) - Converte Exponencial")
+            escreva("(C) - Converte Cartesiano")
+            escreva("(Z) - Para fechar o programa")
+            escreva("***********************************")
+            escreva("Escolha o codigo da operacao: ")
+            leia("codigo")
+            
+
+            escolha (codigo)
+            
+            caso 'M' :
+
+                resultado_modulo = (Z1mod * Z2mod)
+                resultado_arg = (Z1arg + Z2arg)
+
+                escreva("Insira o formato de saida (C)artesiano ou (E)xponencial:")
+                leia("FS")
+                
+
+                escolha (FS)
+                
+                caso 'C':
+                    resultado_cartesianoX = resultado_modulo*(cos(resultado_arg*pi/180))
+                    resultado_cartesianoY = resultado_modulo* (sin(resultado_arg*pi/180))
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o cartesiano.")
+                    escreva("O resultado da multiplicacao Z1 X Z2 foi   +  i ", resultado_cartesianoX,resultado_cartesianoY)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                    
+                caso 'E':
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o exponencial.")
+                    escreva("O resultado da multiplicacao Z1 X Z2 foi: modulo ( ) e fase (  graus). ", resultado_modulo,resultado_arg)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+                
+            caso 'D' :
+
+                resultado_modulo = (Z1mod / Z2mod)
+                resultado_arg = (Z1arg - Z2arg)
+
+                escreva("Insira o formato de saida (C)artesiano ou (E)xponencial:")
+                leia("FS")
+                
+
+                escolha (FS)
+                
+                caso 'C':
+                    resultado_cartesianoX = resultado_modulo*(cos(resultado_arg*pi/180))
+                    resultado_cartesianoY = resultado_modulo* (sin(resultado_arg*pi/180))
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o cartesiano.")
+                    escreva("O resultado da divisao Z1 / Z2 foi   +  i ", resultado_cartesianoX,resultado_cartesianoY)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                    
+                caso 'E':
+                    escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                    escreva("O formato de saida escolhido foi o exponencial.")
+                    escreva("O resultado da divisao Z1 / Z2 foi: modulo ( ) e fase (  graus). ", resultado_modulo,resultado_arg)
+                    escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+                
+            caso 'E' :
+                escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                escreva("A operacao escohida foi converte exponencial.")
+                escreva("Os valores ja estao no formato exponencial.")
+                escreva("Pressione ENTER para ir ao MENU de operacoes.")
+
+                
+            caso 'C':
+                escreva("Os valores iniciais foram Z1:  +  i e Z2:  +  i", Z_1_1, Z_1_2, Z_2_1, Z_2_2)
+                escreva("A operacao escohida foi converte cartesiano.")
+                escreva("Z1:   +  i",cart1x,cart1y)
+                escreva("Z2:   +  i",cart2x,cart2y)
+                escreva("Pressione ENTER para ir ao MENU de operacoes.")
+            
+        
+        enquanto codigo != 'Z'
+    
+    sistema("PAUSE")
+    fimalgoritmo
+
